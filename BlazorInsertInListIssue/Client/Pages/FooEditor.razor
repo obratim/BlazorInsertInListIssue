@@ -1,0 +1,13 @@
+﻿foo @(Entity.Id)
+<input @bind-value="@(Entity.Name)" />
+
+@code {
+    [Parameter] public Foo Entity { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Entity.Name = "new element";
+        base.OnInitialized();
+    }
+
+}

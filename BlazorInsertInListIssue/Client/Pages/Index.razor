@@ -1,0 +1,22 @@
+﻿@page "/"
+
+Items:
+
+<ul>
+    @foreach (var item in List.Select(x => x))
+    {
+            <li>
+                <FooEditor Entity="@item" />
+            </li>
+    }
+</ul>
+
+<input @bind-value="@name" style="width: 25px" />
+<input type="button" @onclick="@(args => { List.Insert(0, new Foo { Id = ++id, Name = name } ); })" value="insert" />
+<input type="button" @onclick="@(args => { List.Add(new Foo { Id = ++id, Name = name } ); })" value="add" />
+
+@code {
+    List<Foo> List = new List<Foo>();
+    int id = 0;
+    string? name;
+}
